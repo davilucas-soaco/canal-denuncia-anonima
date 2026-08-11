@@ -1,0 +1,40 @@
+{
+  "name": "canal-denuncia-anonima",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host",
+    "dev:api": "npm run dev --prefix server",
+    "dev:admin": "npm run dev --prefix admin",
+    "db:up": "echo Use o SQL Server Express local (localhost\\SQLEXPRESS). Arquivos em /data",
+    "db:down": "echo Para parar: Services > SQL Server (SQLEXPRESS)",
+    "db:migrate": "npm run db:migrate --prefix server",
+    "db:seed-admin": "npm run db:seed-admin --prefix server",
+    "build": "tsc -b && vite build",
+    "build:admin": "npm run build --prefix admin",
+    "lint": "oxlint",
+    "preview": "vite preview --host"
+  },
+  "dependencies": {
+    "@hookform/resolvers": "^5.7.1",
+    "@phosphor-icons/react": "^2.1.10",
+    "clsx": "^2.1.1",
+    "jspdf": "^4.2.1",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "react-hook-form": "^7.84.0",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.3.3",
+    "@types/node": "^24.13.3",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.4",
+    "oxlint": "^1.75.0",
+    "tailwindcss": "^4.3.3",
+    "typescript": "~6.0.2",
+    "vite": "^8.2.0"
+  }
+}
