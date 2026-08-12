@@ -66,7 +66,12 @@ export type ReportDetail = {
   }[]
 }
 
-async function request<T>(path: string, init: RequestInit = {}): Promise<T> {
+async function request<T>(
+  path: string,
+  init: RequestInit = {},
+  options: { treat401AsSessionExpired?: boolean } = {},
+): Promise<T> {
+  const { treat401AsSessionExpired = true } = options
   const headers = new Headers(init.headers)
   if (!headers.has('Content-Type') && init.body) {
     headers.set('Content-Type', 'application/json')
@@ -83,8 +88,12 @@ async function request<T>(path: string, init: RequestInit = {}): Promise<T> {
     )
   }
   if (response.status === 401) {
-    setToken(null)
-    throw new Error('Sessão expirada. Faça login novamente.')
+    const body = await response.json().catch(() => null)
+    if (treat401AsSessionExpired) {
+      setToken(null)
+      throw new Error('Sessão expirada. Faça login novamente.')
+    }
+    throw new Error(body?.message || body?.error || 'Credenciais inválidas.')
   }
   if (!response.ok) {
     const body = await response.json().catch(() => null)
@@ -95,10 +104,14 @@ async function request<T>(path: string, init: RequestInit = {}): Promise<T> {
 }
 
 export async function login(email: string, password: string) {
-  return request<{ token: string; user: AdminUser }>('/api/auth/login', {
-    method: 'POST',
-    body: JSON.stringify({ email, password }),
-  })
+  return request<{ token: string; user: AdminUser }>(
+    '/api/auth/login',
+    {
+      method: 'POST',
+      body: JSON.stringify({ email, password }),
+    },
+    { treat401AsSessionExpired: false },
+  )
 }
 
 export async function fetchMe() {
