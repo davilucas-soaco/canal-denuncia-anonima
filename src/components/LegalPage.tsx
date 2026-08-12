@@ -36,10 +36,6 @@ export function LegalPage({ docId, onBack, onOpenLegal }: LegalPageProps) {
             Última atualização: {doc.updatedAt}
           </p>
           <p className="mt-4 rounded-xl bg-brand-mist px-4 py-3 text-xs leading-relaxed text-brand-gray">
-            Texto modelo para o Canal de Denúncias da Só Aço. Deve ser revisado e
-            aprovado pela área jurídica / encarregado de dados (DPO) antes da
-            publicação em produção. Substitua o e-mail do encarregado pelo contato
-            oficial.
           </p>
 
           <div className="mt-10 space-y-8">

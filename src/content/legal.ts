@@ -79,8 +79,7 @@ export const LEGAL_DOCS: Record<LegalDocId, LegalDoc> = {
       {
         heading: '10. Contato do encarregado (DPO)',
         paragraphs: [
-          'Para exercer direitos ou esclarecer dúvidas sobre privacidade: privacidade@soaco.com.br (substitua pelo e-mail oficial do encarregado da Só Aço).',
-          'Você também pode apresentar reclamação à Autoridade Nacional de Proteção de Dados (ANPD).',
+          'Para exercer direitos ou esclarecer dúvidas sobre privacidade: privacidade@soaco.com.br',
         ],
       },
       {
