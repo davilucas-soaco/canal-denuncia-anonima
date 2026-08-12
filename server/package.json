@@ -18,5 +18,8 @@
     "msnodesqlv8": "^5.2.3",
     "mssql": "^11.0.1",
     "multer": "^2.0.2"
+  },
+  "allowScripts": {
+    "msnodesqlv8@5.2.3": true
   }
 }
