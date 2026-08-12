@@ -1,7 +1,8 @@
 import type { ReportPayload, SubmitReportResponse } from '../types/report'
 import { generateProtocol } from '../utils/protocol'
+import { resolveApiBase } from '../config/apiBase'
 
-const API_BASE_URL = (import.meta.env.VITE_API_URL as string | undefined)?.replace(/\/$/, '')
+const API_BASE_URL = resolveApiBase()
 
 export type ProtocolAttachment = {
   name: string

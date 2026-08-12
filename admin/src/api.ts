@@ -1,5 +1,6 @@
-const API_BASE = (import.meta.env.VITE_API_URL as string | undefined)?.replace(/\/$/, '') ||
-  'http://localhost:3001'
+import { resolveApiBase } from './config/apiBase'
+
+const API_BASE = resolveApiBase('http://localhost:3001') || 'http://localhost:3001'
 
 const TOKEN_KEY = 'canal_admin_token'
 
